@@ -16,11 +16,6 @@ def index(request):
     data = download(url)
     return HttpResponse(json.dumps(data), content_type="application/json")
 
-# Authors collection
-def author(request):
-    data = download(url)
-    return HttpResponse(json.dumps(data), content_type="application/json")
-
 # Sort 'published' in asc or desc order
 def published_date(request, order):
     # reverse = desc; (1 = desc, 0 = asc)
