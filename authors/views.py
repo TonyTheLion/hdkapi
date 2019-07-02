@@ -13,17 +13,19 @@ def download(url):
 
 # Sort by author
 def sort_per_author(data):
-    a = dict()
+    ret = dict()
+    # List of authors only
     authors = [ x["author"] for x in data["books"]] 
     for b in data["books"]:
+        # Look in the 'authors' list, using 'set' such that all items are unique
         for z in list(set(authors)):
             if b["author"] == z:
-                if not z in a:
-                    a[z] = [b]
+                if not z in ret:
+                    ret[z] = [b]
                 else:
-                    a[z].append(b)
+                    ret[z].append(b)
 
-    return a
+    return ret
 
 # Index page, show data directly as downloaded ('/authors')
 def index(request):
